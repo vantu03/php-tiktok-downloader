@@ -1,8 +1,12 @@
 <?php
-require 'vendor/autoload.php';
+
+namespace DLHub;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
+use DOMDocument;
+use DOMXPath;
+use Exception;
 
 class DLHub {
     private $input_url;

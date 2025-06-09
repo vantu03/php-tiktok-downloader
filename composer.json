@@ -1,5 +1,10 @@
 {
+    "autoload": {
+        "psr-4": {
+            "DLHub\\": "src/"
+        }
+    },
     "require": {
-        "guzzlehttp/guzzle": "^7.9"
+        "guzzlehttp/guzzle": "^7.0"
     }
 }

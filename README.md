@@ -1,43 +1,50 @@
-# TikTok Downloader PHP Library
+# 📥 TikTok Downloader - PHP Library
 
-A simple PHP library to download TikTok videos, images, and music without needing the official API. This library parses the page content directly and extracts media using Guzzle.
-
-## Features
-
-- Download **videos**, **images**, and **music** from TikTok posts
-- Uses `GuzzleHttp\Client` for reliable HTTP requests
-- Automatically extracts media metadata (title, description, cover)
-- Supports auto-downloading files to disk
-- Built-in retry mechanism
-- Lightweight, no external API needed
+A simple PHP library for downloading videos, images, and music from TikTok posts without using the official API. Ideal for web automation, media scraping, or building custom downloader tools.
 
 ---
 
-## Requirements
+## ✨ Features
 
-- PHP 7.4+
+- ✅ Download **videos**, **music**, and **images**
+- ✅ No need for TikTok API
+- ✅ Auto-download to local storage (optional)
+- ✅ Retrieves metadata (title, description, cover)
+- ✅ Built-in retry mechanism
+- ✅ PSR-4 compatible & Composer autoloading
+
+---
+
+## 🛠 Requirements
+
+- PHP 7.4 or newer
 - Composer
+- Guzzle HTTP client
 
 Install dependencies:
 
 ```bash
-composer require guzzlehttp/guzzle
+composer install
 ````
 
 ---
 
-## Usage
+## 🚀 Usage Example
 
 ```php
+<?php
+
 require 'vendor/autoload.php';
 
+use DLHub\DLHub;
+
 $dl = new DLHub("https://www.tiktok.com/@username/video/1234567890123456789");
-$result = $dl->run(true); // true = auto download media
+$result = $dl->run(true);
 
 print_r($result);
 ```
 
-### Sample Output
+**Sample Output:**
 
 ```php
 Array
@@ -61,30 +68,53 @@ Array
 
 ---
 
-## File Structure
+## 📁 Project Structure
 
-* `DLHub.php`: Main class
-* `vendor/`: Composer dependencies
-* `README.md`: Documentation
-* `.gitignore`: Ignores `vendor/` and unnecessary files
-
----
-
-## How It Works
-
-1. Fetches TikTok page via Guzzle
-2. Parses embedded JSON inside `<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__">`
-3. Extracts video, image, and audio URLs
-4. Optionally downloads files to your local machine
+```
+php-tiktok-downloader/
+├── src/
+│   └── DLHub.php           # Main library class
+├── examples/
+│   └── example.php         # Sample usage
+├── vendor/                 # Composer dependencies
+├── composer.json
+├── .gitignore
+└── README.md
+```
 
 ---
 
-## Disclaimer
+## ⚙️ Composer Autoloading (PSR-4)
 
-This project is for **educational purposes only**. Use it responsibly and in accordance with TikTok's [terms of service](https://www.tiktok.com/legal/terms-of-service).
+Ensure your `composer.json` contains:
+
+```json
+{
+    "autoload": {
+        "psr-4": {
+            "DLHub\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
+```
+
+Then run:
+
+```bash
+composer dump-autoload
+```
 
 ---
 
-## License
+## ⚠️ Disclaimer
 
-MIT License
+This project is for **educational purposes only**. Please use it responsibly and in compliance with [TikTok’s Terms of Service](https://www.tiktok.com/legal/terms-of-service).
+
+---
+
+## 📄 License
+
+Licensed under the [MIT License](LICENSE).
